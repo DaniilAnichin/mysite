@@ -10,15 +10,14 @@
 <body>
 
 <div id="container">
-    <div id="sidebar">
     <div id="selection">Selector:
         {% block selection %}
         <form action="http://localhost:8000/products/select/" method="get">
-            <label for="search_field">Type to find:</label>
+            <label for="search_field">Type to find:</label><br>
             <input id="search_field" type="text" name="q"><br>
-            <label for="highest_price">Highest price limit:</label>
+            <label for="highest_price">Highest price limit:</label><br>
             <input id="highest_price" type="number" min="0" value="10000" name="hi"><br>
-            <label for="lowest_price">Lowest price limit:</label>
+            <label for="lowest_price">Lowest price limit:</label><br>
             <input id="lowest_price" type="number" min="0" value="1" name="lo"><br>
             <label for="kids_field">Include kids models?:</label>
             <input id="kids_field" type="checkbox" value="on" name="k"><br>
@@ -31,7 +30,6 @@
         {% endblock %}
     </div>
     <div id="navigation">Links: {% block navigation %}{% endblock %}</div>
-    </div>
     <div id="content">{% block content %}{% endblock %}</div>
 </div>
 </body>
