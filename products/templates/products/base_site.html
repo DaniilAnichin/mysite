@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'products/style.css' %}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Products site{% endblock %}</title>
+</head>
+
+<body>
+
+<div id="container">
+    <div id="sidebar">
+    <div id="selection">Selector:
+        {% block selection %}
+        <form action="http://localhost:8000/products/select/" method="get">
+            <label for="search_field">Type to find:</label>
+            <input id="search_field" type="text" name="q"><br>
+            <label for="highest_price">Highest price limit:</label>
+            <input id="highest_price" type="number" min="0" value="10000" name="hi"><br>
+            <label for="lowest_price">Lowest price limit:</label>
+            <input id="lowest_price" type="number" min="0" value="1" name="lo"><br>
+            <label for="kids_field">Include kids models?:</label>
+            <input id="kids_field" type="checkbox" value="on" name="k"><br>
+            <label for="adult_field">Include teen models?:</label>
+            <input id="adult_field" type="checkbox" value="on" name="a"><br>
+            <label for="women_field">Include women models?:</label>
+            <input id="women_field" type="checkbox" value="on" name="w"><br>
+            <input type="submit" value="Search">
+        </form>
+        {% endblock %}
+    </div>
+    <div id="navigation">Links: {% block navigation %}{% endblock %}</div>
+    </div>
+    <div id="content">{% block content %}{% endblock %}</div>
+</div>
+</body>
+<div id="footer">
+    {% block footer %}
+        <p>&copy; Daniil Anichin</p>
+    {% endblock %}
+</div>
+</html>

@@ -1,0 +1,35 @@
+{% extends "products/base_site.html" %}
+{% load staticfiles %}
+{% block title %}Detail view of {{production.id}}{% endblock %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% block navigation %}
+    <ul>
+        <li><a href="http://localhost:8000/products/">Home</a></li>
+        <li><a href="http://localhost:8000/products/creation/">Creation of a specimen</a></li>
+    </ul>
+{% endblock %}
+{% block content %}
+<h2>{{ production.name }}</h2>
+<p>Vi har:</p>
+{% if production.kids != 0 %}
+    <p>kids models</p>
+{% endif %}
+{% if production.kid_adult != 0 %}
+    <p>kid adult models</p>
+{% endif %}
+{% if production.women != 0 %}
+    <p>women models</p>
+{% endif %}
+<p>Der price: {{production.price}}</p>
+<p>Der old price: {{production.price_old}}</p>
+<p>Delivering varighed: {{production.delivery}}</p>
+{% if production.package != 0 %}
+    <p>denne model har en package</p>
+{% endif %}
+{% if production.free_porto %}
+    <p>Der er free porto</p>
+{% endif %}
+<li><a href="{{ production.url }}"><p>Ekstern reference</p></a></li>
+<body><img src={{ production.img_url }} width="30%" height="auto">
+{% endblock %}

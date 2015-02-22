@@ -1,0 +1,10 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'friends:popularize' friend.id %}" method="post">
+{% csrf_token %}
+{% for location in friend.location_set.all %}
+    <input type="radio" name="location" id="location{{ forloop.counter }}" value="{{ location.id }}" />
+    <label for="location{{ forloop.counter }}">{{ location.location_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>

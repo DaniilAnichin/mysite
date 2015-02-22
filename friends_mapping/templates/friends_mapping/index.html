@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'friends/style.css' %}" />
+
+{% if friends_list %}
+    <ul>
+    {% for friend in friends_list %}
+        <li><a href="{% url "friends:detail" friend.id %}">{{ friend.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No friends are available.</p>
+{% endif %}
