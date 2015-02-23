@@ -34,16 +34,26 @@
         <div class="pagination">
             <span class="step-links">
                 {% if production_list.has_previous %}
-                    <a href="?page={{ production_list.previous_page_number }}">previous</a>
+                    {% if 'hi' in request.GET %}
+                        <a href="{{ request.build_absolute_uri }}
+                        &page={{ production_list.previous_page_number }}">previous</a>
+                    {% else %}
+                        <a href="?page={{ production_list.previous_page_number }}">previous</a>
+                    {% endif %}
                 {% endif %}
-
+                
                 <span class="current">
-                    Page {{ production_list.number }} of {{ production_list.paginator.num_pages }}.
+                    Page {{ production_list.number }} of {{ production_list.paginator.num_pages }};
                 </span>
 
                 {% if production_list.has_next %}
-                    <a href="?page={{ production_list.next_page_number }}">next</a>
-                {% endif %}
+                    {% if 'hi' in request.GET %}
+                        <a href="{{ request.build_absolute_uri }}
+                        &page={{ production_list.next_page_number }}">next</a>
+                    {% else %}
+                        <a href="?page={{ production_list.next_page_number }}">next</a>
+                    {% endif %}
+                {% endif %}<br>
             </span>
         {% endblock %}</div>
     </span>
