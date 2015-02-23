@@ -2,18 +2,17 @@
 {% load staticfiles %}
 {% block title %}Products list{% endblock %}
 
-
-
 {% block navigation %}
     <ul>
         <li><a href="http://localhost:8000/products/">Home</a></li>
         <li><a href="http://localhost:8000/products/creation/">Creation of a specimen</a></li>
     </ul>
+    {{ block.super }}
 {% endblock %}
 {% block content %}
 {% for production in production_list %}
     <h3><li><a href="{% url "products:detail" production.id %}">{{ production.name }}</a></li></h3>
-    <p>Der sizes: {{ production.sizes }}</p>
-    <p>Der price: {{ production.price }}</p>
+    <p>Sizes: {{ production.sizes }}</p>
+    <p>Price: {{ production.price }}</p>
 {% endfor %}
 {% endblock %}

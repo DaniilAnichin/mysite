@@ -1,17 +1,9 @@
 from django.views import generic
 from django.utils import timezone
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from products.models import production
-
-
-class IndexView(generic.ListView):
-    context_object_name = 'production_list'
-    template_name = 'products/index.html'
-    paginate_by = 10
-
-    def get_queryset(self):
-        return production.objects.order_by('price')
 
 
 class DetailView(generic.DetailView):
@@ -54,4 +46,13 @@ def selection(request):
     if 'w' in request.GET:
         if request.GET['w'] == 'on':
             results = results.filter(women='True')
-    return render(request, 'products/index.html', {'production_list': results.order_by('price')})
+
+    paginator = Paginator(results.order_by('price'), 15)
+    page = request.GET.get('page')
+    try:
+        paginated_results = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_results = paginator.page(1)
+    except EmptyPage:
+        paginated_results = paginator.page(paginator.num_pages)
+    return render(request, 'products/index.html', {'production_list': paginated_results})
