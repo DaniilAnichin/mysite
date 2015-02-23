@@ -6,15 +6,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from products.models import production
 
 
-class IndexView(generic.ListView):
-    context_object_name = 'production_list'
-    template_name = 'products/index.html'
-    paginate_by = 10
-
-    def get_queryset(self):
-        return production.objects.order_by('price')
-
-
 class DetailView(generic.DetailView):
     model = production
     template_name = 'products/detail.html'
