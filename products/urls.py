@@ -1,10 +1,11 @@
 from django.conf.urls import patterns, url
-from products.views import *
+from products import views
 
 
 urlpatterns = patterns('',
-    url(r'^$', selection, name='search'),
-    url(r'^select/$', selection, name='search'),
-    url(r'^(?P<pk>\d+)/$',  DetailView.as_view(), name='detail'),
-    url(r'^creation/$',  CreateProductionView.as_view(), name='creation'),
+    url(r'^$', views.selection, name='selection'),
+    url(r'^select/$', views.selection, name='selection'),
+    url(r'^(?P<pk>\d+)/$',  views.DetailView.as_view(), name='detail'),
+    url(r'^creation/$',  views.CreateProductionView.as_view(), name='creation'),
+    url(r'^search/$',  views.search_look, name='search'),
 )

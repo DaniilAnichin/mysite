@@ -7,7 +7,7 @@ body {
     background: #D5F8D5;
     color: #000000;
     font-family: Trebuchet MS, Arial, Times New Roman;
-    font-size: 14px auto;
+    font-size: 16px auto;
 	margin: 0 auto;
 	width: 90%;
 }
@@ -26,7 +26,6 @@ body {
 }
 
 #selection{
-    font-size: 16px auto;
     width: 25%;
     padding: 10px
     background: #8CBC6E;
@@ -37,7 +36,6 @@ body {
 
 }
 #navigation{
-    font-size: 16px auto;
     width: 25%;
     position: fixed;
     left: 8%;
@@ -48,6 +46,7 @@ body {
 
 }
 #content {
+    font-size: 14px auto;
     float: right;
     padding: 20px;
     width: 65%;
