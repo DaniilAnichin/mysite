@@ -12,7 +12,12 @@
 <div id="container">
     <div id="selection">Selector:
         {% block selection %}
-        {% include "products/search_form.html" with form=products.models.search_form %}
+            <br>
+            <form>
+                {% csrf_token %}
+                {{ search_form }}
+                <input type="submit" name="Submit" value="Submit"/>
+            </form>
         {% endblock %}
     </div>
 

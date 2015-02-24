@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Selection</title>
-</head>
-    <body>
-        <form id="search_form" method="get" action="http://localhost:8000/products/select/">
-            {% csrf_token %}
-            {% for field in form.visible_fields %}
-                {{ field.label }}
-                {% if not "Include" in field.label %}
-                    <br>
-                {% endif %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}<br>
-            {% endfor %}
-            <input type="submit" name="Submit" value="Submit"/>
-        </form>
-    </body>
-</html>
+<form id="search_html" method="get" action="http://localhost:8000/products/select/">
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+    {{ field.label }}
+    {% if not "Include" in field.label %}
+        <br>
+    {% endif %}
+    {{ field.errors }}
+    {{ field.help_text }}
+    {{ field }}<br>
+    {% endfor %}
+    <input type="submit" name="Submit" value="Submit"/>
+</form>

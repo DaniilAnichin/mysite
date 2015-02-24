@@ -30,6 +30,7 @@ TEMPLATE_DEBUG = True
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.request",
+    "products.context_processors.search_form",
 )
 
 ALLOWED_HOSTS = []
