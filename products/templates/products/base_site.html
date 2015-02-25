@@ -15,7 +15,7 @@
             <br>
             <form>
                 {% csrf_token %}
-                {{ search_form }}
+                {{ search_form.as_ul }}
                 <input type="submit" name="Submit" value="Submit"/>
             </form>
         {% endblock %}

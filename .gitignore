@@ -1,7 +1,5 @@
-# Ignore all PyCache files,
 *.pyc
 *.cpython-34.pyc
-# And intermediate databases
 *.xml
 
 *.xml
