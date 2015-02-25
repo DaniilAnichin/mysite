@@ -19,7 +19,7 @@ class DetailView(generic.DetailView):
 class CreateProductionView(generic.CreateView):
     model = Production
     template_name = 'products/edit_production.html'
-    fields = ['name', 'sizes', 'price', 'price_old', 'production_id', 'delivery', 'kids',
+    fields = ['name', 'price', 'price_old', 'production_id', 'delivery', 'kids',
               'kid_adult', 'free_porto', 'package', 'women', 'url', 'img_url']
     
     def form_valid(self, form):

@@ -6,7 +6,7 @@ from products.models import Production
 class ProductionAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Name: ',           {'fields': ['name']}),
-        ('Sizes: ',          {'fields': ['sizes']}),
+        #('Sizes: ',          {'fields': ['sizes']}),
         ('Price: ',          {'fields': ['price']}),
         ('Delivery: ',       {'fields': ['delivery']}),
         ('ID: ',             {'fields': ['production_id']}),

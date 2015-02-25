@@ -3,7 +3,6 @@ from django.db import models
 
 class Production(models.Model):
     name = models.CharField(max_length=200, default=0)
-    sizes = models.CharField(max_length=200, default=0)
     price = models.IntegerField(default=0)
     price_old = models.IntegerField(default=0)
     production_id = models.CharField(max_length=6, default=0)
@@ -18,3 +17,11 @@ class Production(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Sizes(models.Model):
+    production = models.ForeignKey(Production)
+    size_text = models.CharField(max_length=100, default=0)
+
+    def __unicode__(self):
+        return self.size_text

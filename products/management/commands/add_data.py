@@ -17,7 +17,7 @@ class Command(BaseCommand):
         database_list = json.loads(database_site)['latest']
         for product in database_list:
             Production(name=product['name'],
-                       sizes=product['sizes'],
+                       choice_set=product['sizes'].split(),
                        price=''.join(product['price'].split("."))[:-3],
                        price_old=''.join(product['price_old'].split("."))[:-3],
                        production_id=product['id'],
@@ -29,4 +29,8 @@ class Command(BaseCommand):
                        women=(True if product['women'] == '1' else False),
                        url=product['url'],
                        img_url=product['img_url']).save()
+            sizes_list = product['sizes'].split(',')
+            for size in sizes_list:
+                this_production = Production.objects.get(production_id=product['id'])
+                this_production.size_set.create(size_text=size)
         self.stdout.write('Successfully created objects')
