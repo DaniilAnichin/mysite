@@ -1,12 +1,12 @@
 from django.db import models
 
 
-class production(models.Model):
+class Production(models.Model):
     name = models.CharField(max_length=200, default=0)
     sizes = models.CharField(max_length=200, default=0)
     price = models.IntegerField(default=0)
     price_old = models.IntegerField(default=0)
-    id = models.CharField(max_length=6, default=0, primary_key=True, unique=True)
+    production_id = models.CharField(max_length=6, default=0)
     delivery = models.CharField(max_length=20, default=0)
     kids = models.BooleanField(default=False)
     kid_adult = models.BooleanField(default=False)

@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
 {% for production in production_list %}
-    <h3><li><a href="{% url "products:detail" production.id %}">{{ production.name }}</a></li></h3>
+    <h3><li><a href="{% url "products:detail" production.production_id %}">{{ production.name }}</a></li></h3>
     <p>Sizes: {{ production.sizes }}</p>
     <p>Price: {{ production.price }}</p>
 {% endfor %}

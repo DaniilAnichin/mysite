@@ -1,7 +1,7 @@
 import json
 import urllib2
 
-from products.models import production
+from products.models import Production
 from django.core.management.base import BaseCommand
 
 
@@ -16,11 +16,11 @@ class Command(BaseCommand):
         # This will encode python objects from the json and save data
         database_list = json.loads(database_site)['latest']
         for product in database_list:
-            production(name=product['name'],
+            Production(name=product['name'],
                        sizes=product['sizes'],
                        price=''.join(product['price'].split("."))[:-3],
                        price_old=''.join(product['price_old'].split("."))[:-3],
-                       id=product['id'],
+                       production_id=product['id'],
                        delivery=product['delivery'],
                        kids=(True if product['kids'] == '1' else False),
                        kid_adult=(True if product['kid_adult'] == '1' else False),

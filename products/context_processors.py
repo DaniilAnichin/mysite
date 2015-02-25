@@ -1,4 +1,5 @@
-from products.forms import prod_search_form
+from products.forms import ProdSearchForm
+
 
 def search_form(request):
-    return {'search_form': prod_search_form}
+    return {'search_form': ProdSearchForm}

@@ -1,16 +1,15 @@
 from django.views import generic
-from django.shortcuts import render, HttpResponseRedirect, render_to_response
+from django.shortcuts import render, HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.template import RequestContext
 
-from products.models import production
-from products.forms import prod_search_form
+from products.models import Production
 
 
 class DetailView(generic.DetailView):
-    model = production
+    model = Production
     template_name = 'products/detail.html'
     context_object_name = 'production'
+    slug_field = 'production_id'
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
@@ -18,18 +17,18 @@ class DetailView(generic.DetailView):
 
 
 class CreateProductionView(generic.CreateView):
-    model = production
+    model = Production
     template_name = 'products/edit_production.html'
-    fields = ['name', 'sizes', 'price', 'price_old', 'id', 'delivery', 'kids',
+    fields = ['name', 'sizes', 'price', 'price_old', 'production_id', 'delivery', 'kids',
               'kid_adult', 'free_porto', 'package', 'women', 'url', 'img_url']
     
     def form_valid(self, form):
-        production.objects.create(**form.cleaned_data)
+        Production.objects.create(**form.cleaned_data)
         return HttpResponseRedirect('/products/')
 
 
 def selection(request):
-    results = production.objects.all()
+    results = Production.objects.all()
     if 'q' in request.GET:
         results = results.filter(name__contains=request.GET['q'])
     if 'hi' in request.GET:
@@ -55,18 +54,3 @@ def selection(request):
     except EmptyPage:
         paginated_results = paginator.page(paginator.num_pages)
     return render(request, 'products/index.html', {'production_list': paginated_results})
-
-
-def search_look(request):
-    context = RequestContext(request)
-
-    if request.method == 'POST':
-        form = prod_search_form(request.POST)
-        if form.is_valid():
-            form.save(commit=True)
-            return selection(request)
-        else:
-            print(form.errors)
-    else:
-        form = prod_search_form()
-    return render_to_response('products/search_form.html', {'form': form}, context)
