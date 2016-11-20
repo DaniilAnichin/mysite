@@ -8,7 +8,7 @@ class friend(models.Model):
     name = models.CharField(max_length=200)
     sex = models.CharField(max_length=10)
     age = models.CharField(max_length=20)
-    meeting_date = models.DateField('date of the 1st meeting', blank=True, default=timezone.now())
+    meeting_date = models.DateField('date of the 1st meeting', blank=True, default=timezone.now)
 
     def was_met_recently(self):
         return self.meeting_date >= timezone.now() - datetime.timedelta(days=365)

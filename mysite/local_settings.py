@@ -14,4 +14,4 @@ SECRET_KEY = 'qkgmy=7$3m%nf=x^fnou4kw2ugmpa3_+b3i&fuk#fk2$by!@nq'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UA'
+TIME_ZONE = 'Europe/Kiev'
